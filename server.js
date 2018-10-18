@@ -10,6 +10,7 @@ app.use(bodyparser.json());
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
+require('./app/routes/routes.js')(app);
 
 app.get('/api', (req, res) => {
     res.json({"message": "Basic Api"})
@@ -23,8 +24,7 @@ mongoose.connect(dbConfig.url, {
     console.log('Unable to connect to database.');
 });
 
-require('./app/routes/routes.js')(app);
 
-app.listen(db.port, () => {
+app.listen(dbConfig.port, () => {
     console.log("Server started.")
 });
