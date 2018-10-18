@@ -16,7 +16,7 @@ app.get('/api', (req, res) => {
     res.json({"message": "Basic Api"})
 });
 
-mongoose.connect(dbConfig.url, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
 }).then(() => {
     console.log('Connected to database.');
@@ -25,6 +25,6 @@ mongoose.connect(dbConfig.url, {
 });
 
 
-app.listen(dbConfig.port, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log("Server started.")
 });
