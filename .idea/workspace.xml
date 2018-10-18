@@ -119,10 +119,10 @@
       <path value="$PROJECT_DIR$/../Basic REST API/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="650" />
-    <option name="width" value="630" />
-    <option name="height" value="800" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="693" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -135,7 +135,7 @@
           <expand>
             <path>
               <item name="CiscoAPI2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CiscoAPI2" type="462c0819:PsiDirectoryNode" />
+              <item name="Basic REST API" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -182,24 +182,24 @@
       <workItem from="1539635905370" duration="5019000" />
       <workItem from="1539667847108" duration="451000" />
       <workItem from="1539711276251" duration="23000" />
-      <workItem from="1539882502285" duration="10412000" />
+      <workItem from="1539882502285" duration="10698000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24110000" />
+    <option name="totallyTimeSpent" value="24396000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="650" y="0" width="630" height="800" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="693" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.5123153" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24781573" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50119144" side_tool="true" weight="0.6484751" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4988086" visible="true" weight="0.34344828" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4988086" visible="true" weight="0.41778523" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
