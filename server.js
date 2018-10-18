@@ -3,6 +3,7 @@ const bodyparser = require('body-parser');
 const app = express();
 var dbURI = 'mongodb://localhost/Loc8r';
 if (process.env.NODE_ENV === 'production') {
+    console.log("HERE");
     dbURI = process.env.MONGOLAB_URI;
 }
 app.use(bodyparser.urlencoded({extended: true}));
