@@ -4,8 +4,8 @@
   "description": "Basic Rest API",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set NODE_ENV=dev && node app.js"
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "Express",
