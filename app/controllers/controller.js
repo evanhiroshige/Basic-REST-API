@@ -1,5 +1,4 @@
 const Obj = require('../models/model.js');
-var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 exports.create = (req, res) => {
     if (req.body.hasOwnProperty('_id')) {
         return res.status(400).send({
