@@ -10,7 +10,7 @@ exports.create = (req, res) => {
     }
     obj = new Obj(req.body);
     obj.save().then(data => {
-        res.send(data);
+        res.status(201).send(data);
     }).catch(err => {
         res.status(500).send({
             verb: req.method,
@@ -25,7 +25,6 @@ exports.findAll = (req, res) => {
         .then(objs => {
             urls = [];
             objs.forEach(obj => urls.push({"url": req.hostname + req.originalUrl + obj._id}));
-           // res.send(urls);
             res.json(urls);
         }).catch(err => {
         res.status(500).send({
