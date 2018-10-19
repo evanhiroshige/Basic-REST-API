@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const app = express();
-console.log("fsdafsdafsdafsdf" + process.env);
 
 var dbURI = 'mongodb://localhost:27017/test';
 if (process.env.NODE_ENV === 'production') {
@@ -11,17 +10,12 @@ if (process.env.NODE_ENV === 'production') {
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
 
-
-const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-
 app.get('/api', (req, res) => {
-    res.json({"message": "Basic Api"})
+    res.json({"message": "Basic API"})
 });
-
-console.log(dbURI);
 
 mongoose.connect(dbURI, {
     useNewUrlParser: true
@@ -31,7 +25,6 @@ mongoose.connect(dbURI, {
     console.log('Unable to connect to database.');
 });
 require('./app/routes/routes.js')(app);
-console.log(process.env.PORT);
 app.listen(process.env.PORT || 3000, () => {
     console.log("Server started.")
 });
