@@ -6,7 +6,7 @@ console.log("fsdafsdafsdafsdf" + process.env);
 var dbURI = 'mongodb://localhost:27017/test';
 if (process.env.NODE_ENV === 'production') {
     console.log("HERE");
-    dbURI = process.env.MONGOLAB_URI;
+    dbURI = process.env.MONGODB_URI;
 }
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
