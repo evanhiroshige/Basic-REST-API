@@ -23,6 +23,7 @@ exports.findAll = (req, res) => {
     Obj.find()
         .then(objs => {
             urls = [];
+            // add url of each obj to urls
             objs.forEach(obj => urls.push({"url": req.protocol + '://' + req.hostname + req.originalUrl + obj._id}));
             res.json(urls);
         }).catch(err => {
