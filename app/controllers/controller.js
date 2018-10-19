@@ -1,10 +1,10 @@
 const Obj = require('../models/model.js');
-
+var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 exports.create = (req, res) => {
     if (req.body.hasOwnProperty('_id')) {
         return res.status(400).send({
             verb: req.method,
-            url: req.hostname + req.originalUrl,
+            url: req.protocol + '://' + req.hostname + req.originalUrl,
             message: "Can not include _id with request."
         });
     }
@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     }).catch(err => {
         res.status(500).send({
             verb: req.method,
-            url: req.hostname + req.originalUrl,
+            url: req.protocol + '://' + req.hostname + req.originalUrl,
             message: err.message
         });
     });
@@ -24,12 +24,12 @@ exports.findAll = (req, res) => {
     Obj.find()
         .then(objs => {
             urls = [];
-            objs.forEach(obj => urls.push({"url": req.hostname + req.originalUrl + obj._id}));
+            objs.forEach(obj => urls.push({"url": req.protocol + '://' + req.hostname + req.originalUrl + obj._id}));
             res.json(urls);
         }).catch(err => {
         res.status(500).send({
             verb: req.method,
-            url: req.hostname + req.originalUrl,
+            url: req.protocol + '://' + req.hostname + req.originalUrl,
             message: err.message
         });
     });
@@ -41,7 +41,7 @@ exports.findObj = (req, res) => {
             if (!obj) {
                 return res.status(404).send({
                     verb: req.method,
-                    url: req.hostname + req.originalUrl,
+                    url: req.protocol + '://' + req.hostname + req.originalUrl,
                     message: "Could not find object with _id: " + req.params.uid
                 });
             }
@@ -51,13 +51,13 @@ exports.findObj = (req, res) => {
         if (err.kind === 'ObjectId') {
             return res.status(404).send({
                 verb: req.method,
-                url: req.hostname + req.originalUrl,
+                url: req.protocol + '://' + req.hostname + req.originalUrl,
                 message: "Could not find object " + req.params.uid
             });
         }
         return res.status(500).send({
             verb: req.method,
-            url: req.hostname + req.originalUrl,
+            url: req.protocol + '://' + req.hostname + req.originalUrl,
             message: "Error updating object " + req.params.uid
         });
     });
@@ -69,21 +69,21 @@ exports.update = (req, res) => {
             if (!obj) {
                 return res.status(404).send({
                     verb: req.method,
-                    url: req.hostname + req.originalUrl,
+                    url: req.protocol + '://' + req.hostname + req.originalUrl,
                     message: "Could not find object with _id: " + req.params.uid
                 });
             }
             if (!req.body.hasOwnProperty("_id")) {
                 return res.status(400).send({
                     verb: req.method,
-                    url: req.hostname + req.originalUrl,
+                    url: req.protocol + '://' + req.hostname + req.originalUrl,
                     message: "Must include _id: " + req.params.uid
                 });
             }
             if (req.body._id !== req.params.uid) {
                 return res.status(404).send({
                     verb: req.method,
-                    url: req.hostname + req.originalUrl,
+                    url: req.protocol + '://' + req.hostname + req.originalUrl,
                     message: "given _id must match include _id: " + req.params.uid
                 });
             }
@@ -93,7 +93,7 @@ exports.update = (req, res) => {
             ).catch(err => {
                 return res.status(404).send({
                         verb: req.method,
-                        url: req.hostname + req.originalUrl,
+                        url: req.protocol + '://' + req.hostname + req.originalUrl,
                         message: "Could not find object with _id: " + req.params.uid
                     }
                 )
@@ -102,13 +102,13 @@ exports.update = (req, res) => {
         if (err.kind === 'ObjectId') {
             return res.status(404).send({
                 verb: req.method,
-                url: req.hostname + req.originalUrl,
+                url: req.protocol + '://' + req.hostname + req.originalUrl,
                 message: "Could not find object with _id: " + req.params.uid
             });
         }
         return res.status(500).send({
             verb: req.method,
-            url: req.hostname + req.originalUrl,
+            url: req.protocol + '://' + req.hostname + req.originalUrl,
             message: "Error retrieving object: " + req.params.uid
         });
     });
@@ -120,7 +120,7 @@ exports.delete = (req, res) => {
             if (!user) {
                 return res.status(404).send({
                     verb: req.method,
-                    url: req.hostname + req.originalUrl,
+                    url: req.protocol + '://' + req.hostname + req.originalUrl,
                     message: "Could not find user " + req.params.uid
                 });
             }
@@ -129,13 +129,13 @@ exports.delete = (req, res) => {
         if (err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
                 verb: req.method,
-                url: req.hostname + req.originalUrl,
+                url: req.protocol + '://' + req.hostname + req.originalUrl,
                 message: "Could not find user " + req.params.uid
             });
         }
         return res.status(500).send({
             verb: req.method,
-            url: req.hostname + req.originalUrl,
+            url: req.protocol + '://' + req.hostname + req.originalUrl,
             message: "Error deleting user " + req.params.uid
         });
     });
