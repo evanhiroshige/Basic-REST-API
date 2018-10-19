@@ -445,15 +445,54 @@
 		},
 		{
 			"name": "ERROR malformed JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4495dc97-63ed-4664-bc45-19d14fbb59a0",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Not a JSON object\");",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "[fsdf,\nll;,\n\t}"
 				},
 				"url": {
-					"raw": ""
+					"raw": "{{url}}/api/objects/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"objects",
+						""
+					]
 				}
 			},
 			"response": []
